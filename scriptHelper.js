@@ -2,9 +2,10 @@
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   let topBox = document.getElementId("missionTarget")
+    
+   let div = document.getElementById("missionTarget")
    
-   topBox.innerHTML =`
+   div.innerHTML =`
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: ${name} </li>
@@ -13,23 +14,17 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth: ${distance}</li>
                     <li>Number of Moons:${moons}</li>
                 </ol>
-                <img src="${imageUrl}">`
+                <img src="${imageUrl}">`;
    
 }
 
 function validateInput(testInput) {
-    let numberInput = Number(testInput);
-    if (testInput === "")
-    {
+    if (testInput === "" || testInput === null || testInput === 0) {
         return "Empty";
-    } else if (isNaN(numberInput))
-    {
-        return "Not a Number";
-    } else if (isNaN(numberInput) === false)
-    {
-        return "Is a Number";
-    }
- }
+    } else if (!isNaN(Number(testInput))){ 
+        return "Is a number";
+    } return "Not a number";
+        }
 
     
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
@@ -80,22 +75,18 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-            if (response.status >= 400) {
-                throw new Error ("RESPONSE INVALID!");
-            }
-            else {
+           
                 return response.json();
-            }
+            
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    function pickPlanet(planets) {
         let index = Math.floor(Math.random()*planets.length);
         return planets[index];
-    }
+    
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;

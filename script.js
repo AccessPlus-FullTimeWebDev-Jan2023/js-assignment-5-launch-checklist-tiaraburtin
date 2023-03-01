@@ -10,15 +10,16 @@ listedPlanetsResponse.then(function (result) {
     console.log(listedPlanets);
 }).then(function () {
     console.log(listedPlanets);
-    let chosenPlanet = pickPlanet(listedPlanets);
-    addDestinationInfo(document, chosenPlanet.name, chosenPlanet.diameter, chosenPlanet.star, chosenPlanet.distance, chosenPlanet.moons, chosenPlanet.image);  
+    let selectedPlanet = pickPlanet(listedPlanets);
+    
+    addDestinationInfo(document, selectedPlanet.name, selectedPlanet.diameter, selectedPlanet.star, selectedPlanet.distance, selectedPlanet.moons, selectedPlanet.image);  
 });
     
 let list = document.getElementById("faultyItems");
 list.style.visibility = "hidden";
-let theForm = document.querySelector("form");
+let form = document.querySelector("form");
 
-theForm.addEventListener("submit", function(event) {
+form.addEventListener("submit", function(event) {
     event.preventDefault();
     let pilotInput = document.querySelector("input[name=pilotName]");
     let pilot = pilotInput.value;
