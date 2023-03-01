@@ -34,10 +34,10 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let copilotStatus = document.getElementById("copilotStatus");  
 
     if (validateInput(pilot) === 'Empty' || validateInput(copilot) === 'Empty' || validateInput(fuelLevel) === 'Empty' || validateInput(cargoLevel)=== 'Empty') {
-        window.alert('All fields are required!')
+        Window.alert('All fields are required!')
             }
     else if (validateInput(pilot) === 'Not a number' || validateInput(copilot) === 'Not a number' || validateInput(fuelLevel) === 'Not a number' || validateInput(cargoLevel) === "Not a number") {
-        window.alert('Make sure to enter valid information for each field!')
+        Window.alert('Make sure to enter valid information for each field!')
              }   
 
         else {
